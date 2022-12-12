@@ -28,4 +28,4 @@ For given system requirements the calculated slope should be around 2e13
    slope =
 
       2.0455e+13
-      ```
+ ```
