@@ -160,8 +160,8 @@ The 2D CFAR is similar to 1D CFAR, but is implemented in both dimensions of the 
          end      
      end
    ```
-     3. Steps taken to suppress the non-thresholded cells at the edges.
-     ```matlab
+   3. Steps taken to suppress the non-thresholded cells at the edges.
+   ```matlab
      % *%TODO* :
      % The process above will generate a thresholded block, which is smaller 
      %than the Range Doppler Map as the CUT cannot be located at the edges of
@@ -169,5 +169,5 @@ The 2D CFAR is similar to 1D CFAR, but is implemented in both dimensions of the 
      % set those values to 0. 
      
      final_data(Gr+Tr+1:Nr/2-(Gr+Tr),Gd+Td+1:Nd-(Gd+Td))=initial_data;
-     
-     ```
+    
+   ```
