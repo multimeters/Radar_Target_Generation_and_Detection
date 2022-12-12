@@ -40,6 +40,42 @@ A beat signal should be generated such that once range FFT implemented, it gives
 
 **My Code**
  ```matlab
+   for i=1:length(t)         
+    
+    
+    % *%TODO* :
+    %For each time stamp update the Range of the Target for constant velocity. 
+    R_cur=R+v*t(i);
+    tao=2*R_cur/3e8;
+    % *%TODO* :
+    %For each time sample we need update the transmitted and
+    %received signal. 
+    alpha=slope;
+    Tx(i) =  cos(2*pi*(fc*t(i)+alpha*t(i)^2/2));
+    Rx(i) =  cos(2*pi*(fc*(t(i)-tao)+alpha*(t(i)-tao)^2/2));
+    
+    % *%TODO* :
+    %Now by mixing the Transmit and Receive generate the beat signal
+    %This is done by element wise matrix multiplication of Transmit and
+    %Receiver Signal
+    %Mix(i) =cos(2*pi*(2*alpha*R/3e8*t(i)+2*fc*v/3e8*t(i)));
+    Mix(i)=Tx(i).* Rx(i);
+   end
+   ```
+
+
+## 3. FMCW Waveform Design
+**Criteria:** 
+
+Implement the Range FFT on the Beat or Mixed Signal and plot the result.
+
+**MEETS SPECIFICATIONS:**  
+
+A correct implementation should generate a peak at the correct range, i.e the
+initial position of target assigned with an error margin of +/- 10 meters.
+
+**My Code**
+ ```matlab
    Mix_2d = reshape(Mix, [Nr, Nd]);
    % *%TODO* :
    %run the FFT on the beat signal along the range bins dimension (Nr) and
@@ -68,3 +104,4 @@ A beat signal should be generated such that once range FFT implemented, it gives
 **Result**
 
 ![FFT1D](FFT1D.jpg)
+
