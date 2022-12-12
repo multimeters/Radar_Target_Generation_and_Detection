@@ -66,4 +66,5 @@ A beat signal should be generated such that once range FFT implemented, it gives
    axis ([0 200 0 0.5]);
    ```
 **Result**
+
 ![FFT1D](FFT1D.jpg)
