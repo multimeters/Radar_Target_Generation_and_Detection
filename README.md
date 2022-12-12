@@ -120,7 +120,7 @@ initial position of target assigned with an error margin of +/- 10 meters.
 - Selection of Training, Guard cells and offset.
 - Steps taken to suppress the non-thresholded cells at the edges.
 
-**aproach:**  
+**Aproach:**  
 The 2D CFAR is similar to 1D CFAR, but is implemented in both dimensions of the range doppler block. The 2D CA-CFAR implementation involves the training cells occupying the cells surrounding the cell under test with a guard grid in between to prevent the impact of a target signal on the noise estimate.
 
    1. Select the number of Training Cells and Guard Cells in both the dimensions and set offset of threshold
@@ -138,3 +138,36 @@ The 2D CFAR is similar to 1D CFAR, but is implemented in both dimensions of the 
    % offset the threshold by SNR value in dB
    off_set=1.4;
    ```
+   2. Slide Window through the complete Range Doppler Map
+   ```matlab
+     RDM_temp=db2pow(RDM);
+     final_data=zeros(Nr/2,Nd);
+     initial_data=zeros(Nr/2-(2*(Gr+Tr)),Nd-(2*(Gd+Td)));
+     for i = 1:(Nr/2-(2*(Gr+Tr)+1)) 
+         for j=1:(Nd-(2*(Gd+Td)+1))
+             data_all=RDM_temp(i:i+2*(Tr+Gr)+1,j:j+2*(Td+Gd)+1);
+             data_inner=RDM_temp(i+Tr:i+Tr+2*Gr+1,j+Td:j+Td+2*Gd+1);
+             sum_tain=sum(sum(data_all))-sum(sum(data_inner));
+             train_number=(2*(Gr+Tr)+1)*(2*(Gd+Td)+1)-(2*Gr+1)*(2*Gd+1);
+             mean_train=sum_tain/train_number;
+             mean_dbd=pow2db(mean_train);
+             thres=mean_dbd*off_set;
+             if(RDM(i+Tr+Gr,j+Td+Gd)>thres)
+                  initial_data(i,j)=1;
+             else
+                  initial_data(i,j)=0;
+             end
+         end      
+     end
+   ```
+     3. Steps taken to suppress the non-thresholded cells at the edges.
+     ```matlab
+     % *%TODO* :
+     % The process above will generate a thresholded block, which is smaller 
+     %than the Range Doppler Map as the CUT cannot be located at the edges of
+     %matrix. Hence,few cells will not be thresholded. To keep the map size same
+     % set those values to 0. 
+     
+     final_data(Gr+Tr+1:Nr/2-(Gr+Tr),Gd+Td+1:Nd-(Gd+Td))=initial_data;
+     
+     ```
