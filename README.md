@@ -41,15 +41,15 @@ A beat signal should be generated such that once range FFT implemented, it gives
 **My Code**
  ```matlab
    Mix_2d = reshape(Mix, [Nr, Nd]);
-    % *%TODO* :
+   % *%TODO* :
    %run the FFT on the beat signal along the range bins dimension (Nr) and
    %normalize.
    X=Mix_2d(:,1);
    signal_fft1 = fft(X)./Nr;
-    % *%TODO* :
+   % *%TODO* :
    % Take the absolute value of FFT output
    signal_fft2 = abs(signal_fft1(1:Nr));
-    % *%TODO* :
+   % *%TODO* :
    % Output of FFT is double sided signal, but we are interested in only one side of the spectrum.
    % Hence we throw out half of the samples.
    L=1024;
@@ -59,8 +59,8 @@ A beat signal should be generated such that once range FFT implemented, it gives
    figure ('Name','Range from First FFT')
    subplot(2,1,1)
 
-    % *%TODO* :
-    % plot FFT output 
+   % *%TODO* :
+   % plot FFT output 
    plot(signal_fft3);
 
    axis ([0 200 0 0.5]);
