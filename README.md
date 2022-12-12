@@ -107,10 +107,14 @@ initial position of target assigned with an error margin of +/- 10 meters.
 
 ## 4. FMCW Waveform Design
 **Criteria:** 
+
 1.Implement the 2D CFAR process on the output of 2D FFT operation, i.e the Range Doppler Map.
+
 2.Create a CFAR README File
 **MEETS SPECIFICATIONS:**  
+
 1.The 2D CFAR processing should be able to suppress the noise and separate the target signal. The output should match the image shared in walkthrough.
+
 2.In a README file, write brief explanations for the following:
 
 - Implementation steps for the 2D CFAR process.
