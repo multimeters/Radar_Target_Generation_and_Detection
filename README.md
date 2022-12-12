@@ -8,7 +8,7 @@ Using the given system requirements, design a FMCW waveform. Find its Bandwidth 
 
 For given system requirements the calculated slope should be around 2e13 
 
-**Code**
+**My Code**
  ```matlab
    %% Radar Specifications 
    %%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -21,3 +21,11 @@ For given system requirements the calculated slope should be around 2e13
    Tchirp=5.5*2*200/3e8;
    slope=B/Tchirp;
    ```
+**Result**
+ ```matlab
+   >> slope
+
+   slope =
+
+      2.0455e+13
+      ```
