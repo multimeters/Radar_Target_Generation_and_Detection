@@ -17,11 +17,7 @@ For given system requirements the calculated slope should be around 2e13
    % Range Resolution = 1 m
    % Max Velocity = 100 m/s
    %%%%%%%%%%%%%%%%%%%%%%%%%%%
-   
-   max_range=200;
-   c = 3e8;
-   range_resolution= 1;
-   
-   %Operating carrier frequency of Radar 
-   fc= 77e9;             %carrier freq
+   B=3e8/(2*1);
+   Tchirp=5.5*2*200/3e8;
+   slope=B/Tchirp;
    ```
