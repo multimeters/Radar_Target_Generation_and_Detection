@@ -66,10 +66,4 @@ A beat signal should be generated such that once range FFT implemented, it gives
    axis ([0 200 0 0.5]);
    ```
 **Result**
- ```matlab
-   >> slope
-
-   slope =
-
-      2.0455e+13
- ```
+![RUNOOB 图标](FFT1D.JPG)
