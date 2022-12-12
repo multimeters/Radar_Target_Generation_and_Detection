@@ -52,7 +52,7 @@ A beat signal should be generated such that once range FFT implemented, it gives
    % *%TODO* :
    % Output of FFT is double sided signal, but we are interested in only one side of the spectrum.
    % Hence we throw out half of the samples.
-   L=1024;
+
    signal_fft3  = signal_fft2;       
 
    %plotting the range
