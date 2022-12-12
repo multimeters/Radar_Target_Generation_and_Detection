@@ -119,3 +119,22 @@ initial position of target assigned with an error margin of +/- 10 meters.
 - Implementation steps for the 2D CFAR process.
 - Selection of Training, Guard cells and offset.
 - Steps taken to suppress the non-thresholded cells at the edges.
+
+**aproach:**  
+The 2D CFAR is similar to 1D CFAR, but is implemented in both dimensions of the range doppler block. The 2D CA-CFAR implementation involves the training cells occupying the cells surrounding the cell under test with a guard grid in between to prevent the impact of a target signal on the noise estimate.
+
+   1. Select the number of Training Cells and Guard Cells in both the dimensions and set offset of threshold
+   ```matlab
+   % *%TODO* :
+   %Select the number of Training Cells in both the dimensions.
+   Tr=10;
+   Td=8;
+   % *%TODO* :
+   %Select the number of Guard Cells in both dimensions around the Cell under 
+   %test (CUT) for accurate estimation
+   Gr=4;
+   Gd=4;
+   % *%TODO* :
+   % offset the threshold by SNR value in dB
+   off_set=1.4;
+   ```
